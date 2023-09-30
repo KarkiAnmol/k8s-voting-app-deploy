@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: voting-app-pod  # Name of the Pod
+  labels:
+    name: voting-app-pod  # Label to identify the Pod
+    app: demo-voting-app  # Label to identify the application
+spec:
+  containers:
+    - name: voting-app-container  # Name of the container within the Pod
+      image: kodekloud/examplevotingapp_vote:v1  # Docker image for the voting app
+      ports:
+        - containerPort: 80  # Port the container listens on
