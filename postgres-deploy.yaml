@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deploy # Name of the Deployment
+  labels:
+    name: postgres-deploy  # Label to identify the Deployment
+    app: demo-voting-app  # Label to identify the application
+spec:
+  replicas: 1  # Number of desired replicas of the Pod
+  selector: 
+    matchLabels:
+       name: postgres-pod  # Label selector to match Pods managed by this Deployment
+       app: demo-voting-app  # Additional label to identify the application
+  template:
+   metadata:
+     name: postgres-pod  # Name of the Pod
+     labels:
+      name: postgres-pod  # Label to identify the Pod
+      app: demo-voting-app  # Label to identify the application
+   spec:
+    containers:
+     - name: postgres # Name of the container within the Pod
+       image: postgres  # Docker image for the redis
+       ports:
+        - containerPort: 5432  # Default Port the postgres container listens on
+       env:
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "postgres"

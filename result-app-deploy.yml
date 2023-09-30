@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result-app-deploy  # Name of the Deployment
+  labels:
+    name: result-app-deploy  # Label to identify the Deployment
+    app: demo-voting-app  # Label to identify the application
+spec:
+  replicas: 1  # Number of desired replicas of the Pod
+  selector: 
+    matchLabels:
+       name: result-app-pod  # Label selector to match Pods managed by this Deployment
+       app: demo-voting-app  # Additional label to identify the application
+    
+  template:
+    metadata:
+     name: result-app-pod  # Name of the result Pod
+     labels:
+       name: result-app-pod  # Label to identify the result Pod
+       app: demo-voting-app  # Label to identify the application
+    spec:
+      containers:
+        - name: result-app-container  # Name of the container within the Pod
+          image: kodekloud/examplevotingapp_result:v1  # Docker image for the result app
+          ports:
+            - containerPort: 80  # Port the container listens on

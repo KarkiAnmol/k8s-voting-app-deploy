@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-app-deploy  # Name of the Deployment
+  labels:
+    name: voting-app-deploy  # Label to identify the Deployment
+    app: demo-voting-app  # Label to identify the application
+spec:
+  replicas: 1  # Number of desired replicas of the Pod
+  selector: 
+    matchLabels:
+       name: voting-app-pod  # Label selector to match Pods managed by this Deployment
+       app: demo-voting-app  # Additional label to identify the application
+    
+  template:
+    metadata:
+     name: voting-app-pod  # Name of the Pod template
+     labels:
+      name: voting-app-pod  # Label to identify the Pod
+      app: demo-voting-app  # Label to identify the application
+    spec:
+     containers:
+      - name: voting-app-container  # Name of the container within the Pod
+        image: kodekloud/examplevotingapp_vote:v1  # Docker image for the voting app
+        ports:
+         - containerPort: 80  # Port the container listens on

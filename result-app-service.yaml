@@ -10,8 +10,7 @@ spec:
   ports:
     - port: 80  # Port on which the Service will be exposed
       targetPort: 80  # Port that the Service will forward traffic to
-      nodePort: 30005
-
+      nodePort: 30006
   selector:
     name: result-app-pod  # Label to identify the result Pod
     app: demo-voting-app  

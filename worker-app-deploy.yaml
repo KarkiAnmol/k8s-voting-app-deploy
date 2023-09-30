@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-app-deploy  # Name of the Deployment
+  labels:
+    name: worker-app-deploy  # Label to identify the Deployment
+    app: demo-voting-app  # Label to identify the application
+spec:
+  replicas: 1  # Number of desired replicas of the Pod
+  selector: 
+    matchLabels:
+       name: worker-pod  # Label selector to match Pods managed by this Deployment
+       app: demo-voting-app  # Additional label to identify the application
+    
+  template:
+    metadata:
+     name: worker-pod  # Name of the Pod
+     labels:
+       name: worker-pod  # Label to identify the Pod
+       app: demo-voting-app  # Label to identify the application
+    spec:
+      containers:
+       - name: worker-app # Name of the container within the Pod
+         image: kodekloud/examplevotingapp_worker:v1  # Docker image for the woker
+      
+      
