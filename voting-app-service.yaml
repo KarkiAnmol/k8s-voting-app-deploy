@@ -6,9 +6,11 @@ metadata:
     name: voting-service  # Label to identify the Service
     app: demo-voting-app  # Label to associate the Service with the application
 spec:
+  type: NodePort
   ports:
     - port: 80  # Port on which the Service will be exposed
       targetPort: 80  # Port that the Service will forward traffic to
+      nodePort: 30004
   selector:
     name: voting-app-pod  # Label to identify the Pod
     app: demo-voting-app  # Label to identify the application
