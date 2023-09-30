@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: result-service  # Name of the Service
+  labels:
+    name: result-service  # Label to identify the Service
+    app: demo-voting-app  # Label to associate the Service with the application
+spec:
+  ports:
+    - port: 80  # Port on which the Service will be exposed
+      targetPort: 80  # Port that the Service will forward traffic to
+  selector:
+    name: result-app-pod  # Label to identify the result Pod
+    app: demo-voting-app  
