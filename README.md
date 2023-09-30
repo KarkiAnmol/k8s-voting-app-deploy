@@ -58,22 +58,20 @@ minikube service result-service --url
 
 # Cleanup
 
-To remove the deployed resources and stop Minikube, you can run:
+To remove the deployed resources, follow these steps:
+1. Delete the Pods and Services:
 
-```bash
-kubectl delete -f postgres-pod.yaml
-kubectl delete -f postgres-service.yaml
-kubectl delete -f redis-pod.yaml
-kubectl delete -f redis-service.yaml
-kubectl delete -f voting-app-pod.yaml
-kubectl delete -f voting-app-service.yaml
-kubectl delete -f result-app-pod.yaml
-kubectl delete -f result-app-service.yaml
-kubectl delete -f worker-app-pod.yaml
-# If applicable, delete services for the worker app as well.
+   Use `kubectl delete` to delete each individual resource, including Pods and Services. Replace `(name of pod)` and `(name of service)` with the actual names of your resources.
 
-minikube stop
-```
+   ```bash
+   kubectl delete pods {name of pod}
+   kubectl delete services {name of service}
+   ```
+   to stop minikube, use:
+      ```bash
+         minikube stop
+
+     ```
 # Troubleshooting
 
 If you encounter any issues, please refer to the [Minikube documentation](https://minikube.sigs.k8s.io/docs/start/) or create a GitHub issue for assistance.
