@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis  # Name of the Service
+  labels:
+    name: redis-service  # Label to identify the Service
+    app: demo-voting-app  # Label to associate the Service with the application
+spec:
+  ports:
+    - port: 6379  # Port on which the Service will be exposed
+      targetPort: 6379  # Port that the Service will forward traffic to
+  selector:
+    name: redis-pod  # Selector to match Pods that the Service should route traffic to
+    app: demo-voting-app  # Additional label to match Pods for the application
